@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
+import { useSelector, useDispatch } from "react-redux";
+import { setUserName } from "../../store/features/userNameSlice";
+
 const Join = () => {
-  const [name, setName] = useState("");
+  const name = useSelector((state) => state.username);
+  const dispatch = useDispatch();
   const [room, setRoomName] = useState("");
 
   return (
@@ -16,7 +20,7 @@ const Join = () => {
           className="w-2/12 my-4 shadow rounded py-2 px-3 bg-gray-200 placeholder-gray-600 font-thin"
           placeholder="Enter your name"
           type="text"
-          onChange={(event) => setName(event.target.value)}
+          onChange={(event) => dispatch(setUserName(event.target.value))}
         />
         <input
           required
@@ -27,7 +31,7 @@ const Join = () => {
         />
         <Link
           onClick={(event) => (!name || !room ? event.preventDefault() : null)}
-          to={`/chat?name=${name}&room=${room}`}
+          to={`/chat?room=${room}`}
         >
           <button
             className="focus:outline-none outline-none my-4 border py-2 px-8 rounded-xl text-gray-200 hover:bg-white hover:text-gray-700"
