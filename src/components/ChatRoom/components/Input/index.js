@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import { AiOutlineSend } from "react-icons/ai";
 import { GrEmoji } from "react-icons/gr";

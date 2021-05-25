@@ -4,10 +4,12 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setUserName } from "../../store/features/userNameSlice";
 
-const Join = () => {
+const Join = ({ location }) => {
   const name = useSelector((state) => state.username);
   const dispatch = useDispatch();
-  const [room, setRoomName] = useState("");
+  const [room, setRoomName] = useState(
+    location?.state?.roomName ? location?.state?.roomName : ""
+  );
 
   return (
     <div className="w-full h-screen bg-black bg-opacity-80">
@@ -26,6 +28,7 @@ const Join = () => {
           required
           className="w-2/12 shadow rounded py-2 px-3 bg-gray-200 placeholder-gray-600 font-thin"
           placeholder="Enter room name"
+          value={room}
           type="text"
           onChange={(event) => setRoomName(event.target.value)}
         />

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import queryString from "query-string";
 import io from "socket.io-client";
+import { Redirect } from "react-router-dom";
 
 import InfoBar from "./components/InfoBar";
 import Input from "./components/Input";
@@ -47,6 +48,15 @@ const ChatRoom = ({ location }) => {
     }
   };
 
+  if (!name)
+    return (
+      <Redirect
+        to={{
+          pathname: "/",
+          state: { roomName: queryString.parse(location.search).room },
+        }}
+      />
+    );
   return (
     <div className="h-screen bg-green-200 flex justify-center items-center">
       <div className="flex flex-col justify-between h-2/4 w-6/12 2xl:w-4/12 mx-auto bg-gray-200">
