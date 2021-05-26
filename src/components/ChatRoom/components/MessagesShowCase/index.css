@@ -1,5 +1,10 @@
 .ScrollToBottomBtn {
-  background-color: #9ee6b1;
+  background-color: #9ee6b1 !important;
+}
+
+.ScrollToBottomBtn:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 ::-webkit-scrollbar {
   width: 4px;

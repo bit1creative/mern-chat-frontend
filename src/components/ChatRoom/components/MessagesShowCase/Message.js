@@ -3,8 +3,8 @@ import moment from "moment";
 const Message = ({ message: { user, text, date }, name }) =>
   user === name.trim().toLowerCase() ? (
     <div className="flex justify-end p-2">
-      <div className="w-5/12 bg-green-200 bg-opacity-80 rounded-xl py-1 px-2">
-        <div className="flex flex-row justify-between">
+      <div className="min-w-1/3 max-w-3/4 md:w-5/12 bg-green-200 bg-opacity-80 rounded-xl py-1 px-2 break-words">
+        <div className="flex flex-row justify-between truncate">
           <p className="font-thin text-sm text-right">{user}</p>
         </div>
         <div>
@@ -28,11 +28,11 @@ const Message = ({ message: { user, text, date }, name }) =>
       </div>
     </div>
   ) : user === "admin" ? (
-    <div className="font-thin text-sm text-center">{text}</div>
+    <div className="font-thin text-sm text-center truncate px-16">{text}</div>
   ) : (
     <div className="flex justify-start p-2">
-      <div className="w-5/12 bg-green-100 bg-opacity-80 rounded-xl py-1 px-2">
-        <div className="flex flex-row justify-between">
+      <div className="min-w-1/3 max-w-3/4 md:w-5/12 bg-green-100 bg-opacity-80 rounded-xl py-1 px-2 break-words">
+        <div className="flex flex-row justify-between truncate">
           <p className="font-thin text-sm text-left">{user}</p>
         </div>
         {/* <p className="font-thin text-sm">{user}</p> */}
