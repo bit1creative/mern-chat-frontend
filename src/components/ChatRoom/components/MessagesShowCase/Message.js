@@ -3,7 +3,7 @@ import moment from "moment";
 const Message = ({ message: { user, text, date }, name }) =>
   user === name.trim().toLowerCase() ? (
     <div className="flex justify-end p-2">
-      <div className="min-w-1/3 max-w-3/4 md:w-5/12 bg-green-200 bg-opacity-80 rounded-xl py-1 px-2 break-words">
+      <div className="min-w-1/3 max-w-3/4 md:max-w-1/2 bg-green-200 bg-opacity-80 rounded-xl py-1 px-2 break-words">
         <div className="flex flex-row justify-between truncate">
           <p className="font-thin text-sm text-right">{user}</p>
         </div>
@@ -31,7 +31,7 @@ const Message = ({ message: { user, text, date }, name }) =>
     <div className="font-thin text-sm text-center truncate px-16">{text}</div>
   ) : (
     <div className="flex justify-start p-2">
-      <div className="min-w-1/3 max-w-3/4 md:w-5/12 bg-green-100 bg-opacity-80 rounded-xl py-1 px-2 break-words">
+      <div className="min-w-1/3 max-w-3/4 md:max-w-1/2 bg-green-100 bg-opacity-80 rounded-xl py-1 px-2 break-words">
         <div className="flex flex-row justify-between truncate">
           <p className="font-thin text-sm text-left">{user}</p>
         </div>
