@@ -16,8 +16,8 @@ const ChatRoom = ({ location }) => {
   const [room, setRoomName] = useState("");
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
-  const ENDPOINT = "https://kinda-realtime-chat.herokuapp.com/";
-  // const ENDPOINT = "192.168.1.6:5000";
+  // const ENDPOINT = "https://kinda-realtime-chat.herokuapp.com/";
+  const ENDPOINT = "192.168.1.6:5000";
 
   useEffect(() => {
     const { room } = queryString.parse(location.search);
@@ -27,6 +27,10 @@ const ChatRoom = ({ location }) => {
     setRoomName(room);
 
     socket.emit("join", { name, room }, () => {});
+
+    socket.on("loadMessageHistory", ({ messagesHistory }) => {
+      setMessages([...messagesHistory]);
+    });
 
     return () => {
       socket.disconnect();

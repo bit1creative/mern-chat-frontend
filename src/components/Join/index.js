@@ -60,7 +60,7 @@ const Join = ({ location }) => {
             className="focus:outline-none outline-none border py-2 px-8 rounded-xl text-gray-700 bg-gray-200 hover:bg-black hover:opacity-80 hover:text-gray-300"
             type="submit"
             onMouseEnter={() => {
-              setBgStyle("bg-gray-300 dark:bg-gray-700");
+              setBgStyle("bg-green-200 dark:bg-gray-700");
               setJoinTextStyle(
                 "text-black text-opacity-80 border-black border-opacity-80"
               );
