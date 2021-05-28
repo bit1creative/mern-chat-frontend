@@ -6,6 +6,7 @@ import { Redirect } from "react-router-dom";
 import InfoBar from "./components/InfoBar";
 import Input from "./components/Input";
 import MessagesShowCase from "./components/MessagesShowCase";
+import UsersShowCase from "./components/UsersShowcase";
 
 import { useSelector } from "react-redux";
 
@@ -16,6 +17,7 @@ const ChatRoom = ({ location }) => {
   const [room, setRoomName] = useState("");
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
+  const [usersInChat, setUsersInChat] = useState([]);
   // const ENDPOINT = "https://kinda-realtime-chat.herokuapp.com/";
   const ENDPOINT = "192.168.1.6:5000";
 
@@ -32,9 +34,12 @@ const ChatRoom = ({ location }) => {
       setMessages([...messagesHistory]);
     });
 
+    socket.on("getUsersInChat", ({ usersInChat }) => {
+      setUsersInChat([...usersInChat]);
+    });
+
     return () => {
       socket.disconnect();
-
       socket.off();
     };
   }, [ENDPOINT, location.search]);
@@ -47,7 +52,6 @@ const ChatRoom = ({ location }) => {
 
   const sendMessage = (event) => {
     event.preventDefault();
-
     if (message) {
       socket.emit("sendMessage", message, () => setMessage(""));
     }
@@ -63,8 +67,8 @@ const ChatRoom = ({ location }) => {
       />
     );
   return (
-    <div className="h-screen bg-green-200 flex justify-center items-center">
-      <div className="flex flex-col justify-between h-full lg:h-5/6 xl:h-3/4 w-full lg:w-6/12 mx-auto bg-gray-200">
+    <div className="h-screen bg-green-200 flex flex-col md:flex-row justify-center items-center">
+      <div className="flex flex-col justify-between h-full lg:h-5/6 xl:h-3/4 w-full lg:w-6/12 bg-gray-200">
         <InfoBar room={room}></InfoBar>
         <MessagesShowCase
           messages={messages}
@@ -77,6 +81,7 @@ const ChatRoom = ({ location }) => {
           sendMessage={sendMessage}
         ></Input>
       </div>
+      <UsersShowCase users={usersInChat}></UsersShowCase>
     </div>
   );
 };

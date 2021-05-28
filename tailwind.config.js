@@ -22,6 +22,12 @@ module.exports = {
         "1/2": "50%",
         "3/4": "75%",
       },
+      transitionProperty: {
+        width: "width",
+        height: "height",
+        size: "width, height",
+        spacing: "margin, padding",
+      },
     },
   },
   variants: {
