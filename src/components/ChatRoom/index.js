@@ -18,6 +18,7 @@ const ChatRoom = ({ location }) => {
   const [message, setMessage] = useState("");
   const [messages, setMessages] = useState([]);
   const [usersInChat, setUsersInChat] = useState([]);
+  const [error, setError] = useState(null);
   // const ENDPOINT = "https://kinda-realtime-chat.herokuapp.com/";
   const ENDPOINT = "192.168.1.6:5000";
 
@@ -28,7 +29,9 @@ const ChatRoom = ({ location }) => {
 
     setRoomName(room);
 
-    socket.emit("join", { name, room }, () => {});
+    socket.emit("join", { name, room }, (error) => {
+      setError(error);
+    });
 
     socket.on("loadMessageHistory", ({ messagesHistory }) => {
       setMessages([...messagesHistory]);
@@ -57,12 +60,12 @@ const ChatRoom = ({ location }) => {
     }
   };
 
-  if (!name)
+  if (!name || error)
     return (
       <Redirect
         to={{
           pathname: "/",
-          state: { roomName: queryString.parse(location.search).room },
+          state: { roomName: queryString.parse(location.search).room, error },
         }}
       />
     );

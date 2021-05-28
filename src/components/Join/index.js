@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setUserName } from "../../store/features/userNameSlice";
 
+import Alert from "@material-ui/lab/Alert";
+
 const Join = ({ location }) => {
   const name = useSelector((state) => state.username);
   const dispatch = useDispatch();
@@ -30,6 +32,9 @@ const Join = ({ location }) => {
 
   return (
     <div className={`w-full h-screen overflow-hidden ${bgStyle}`}>
+      <div className={`${location?.state?.error ? "block" : "hidden"}`}>
+        <Alert severity="error">{location?.state?.error}</Alert>
+      </div>
       <div className="h-full flex flex-col justify-center items-center transition">
         <div
           className={`font-thin text-2xl w-5/12 md:w-3/12 lg:w-2/12 text-center py-2 border-b ${joinTextStyle}`}
