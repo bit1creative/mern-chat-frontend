@@ -16,7 +16,7 @@ const InfoBar = ({ room }) => {
           <div className="text-4xl p-2">
             <AiFillWechat />
           </div>
-          <h3 className="align-middle my-auto">{room}</h3>
+          <h3 className="align-middle my-auto">{room.trim()}</h3>
         </div>
         <div className="my-auto px-4 flex flex-row">
           <button

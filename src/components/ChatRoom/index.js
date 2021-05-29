@@ -19,8 +19,8 @@ const ChatRoom = ({ location }) => {
   const [messages, setMessages] = useState([]);
   const [usersInChat, setUsersInChat] = useState([]);
   const [error, setError] = useState(null);
-  const ENDPOINT = "https://kinda-realtime-chat.herokuapp.com/";
-  // const ENDPOINT = "192.168.1.6:5000";
+  // const ENDPOINT = "https://kinda-realtime-chat.herokuapp.com/";
+  const ENDPOINT = "192.168.1.6:5000";
 
   useEffect(() => {
     const { room } = queryString.parse(location.search);
