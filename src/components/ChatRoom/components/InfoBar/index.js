@@ -10,8 +10,8 @@ import { triggerContacts } from "../../../../store/features/showContactsSlice";
 const InfoBar = ({ room }) => {
   const dispatch = useDispatch();
   return (
-    <div className="w-full mx-auto mb-2">
-      <div className="w-full flex flex-row justify-between bg-green-400 text-gray-100">
+    <div className="w-full mx-auto">
+      <div className="w-full flex flex-row justify-between bg-custom-pinker text-gray-100">
         <div className="flex flex-row truncate">
           <div className="text-4xl p-2">
             <AiFillWechat />

@@ -28,6 +28,14 @@ module.exports = {
         size: "width, height",
         spacing: "margin, padding",
       },
+      colors: {
+        "custom-green": "#caf7e3",
+        "custom-lighter-pink": "#f8eded",
+        "custom-light-pink": "#f6dfeb",
+        "custom-pink": "#e4bad4",
+        "custom-pinker": "#e798ae",
+        "custom-for-name": "#ba135d",
+      },
     },
   },
   variants: {

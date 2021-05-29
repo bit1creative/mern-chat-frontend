@@ -19,8 +19,8 @@ const ChatRoom = ({ location }) => {
   const [messages, setMessages] = useState([]);
   const [usersInChat, setUsersInChat] = useState([]);
   const [error, setError] = useState(null);
-  // const ENDPOINT = "https://kinda-realtime-chat.herokuapp.com/";
-  const ENDPOINT = "192.168.1.6:5000";
+  const ENDPOINT = "https://kinda-realtime-chat.herokuapp.com/";
+  // const ENDPOINT = "192.168.1.6:5000";
 
   useEffect(() => {
     const { room } = queryString.parse(location.search);
@@ -70,9 +70,12 @@ const ChatRoom = ({ location }) => {
       />
     );
   return (
-    <div className="h-screen bg-green-200 flex flex-col md:flex-row justify-center items-center">
-      <div className="flex flex-col justify-between h-full lg:h-5/6 xl:h-3/4 w-full lg:w-6/12 bg-gray-200">
+    <div className="h-screen bg-custom-lighter-pink bg-opacity-50 flex flex-col md:flex-row justify-center items-center">
+      <div className="flex flex-col justify-between h-full lg:h-5/6 xl:h-3/4 w-full lg:w-6/12 bg-custom-lighter-pink">
         <InfoBar room={room}></InfoBar>
+        <div className="md:hidden">
+          <UsersShowCase users={usersInChat}></UsersShowCase>
+        </div>
         <MessagesShowCase
           messages={messages}
           name={name}
@@ -84,7 +87,9 @@ const ChatRoom = ({ location }) => {
           sendMessage={sendMessage}
         ></Input>
       </div>
-      <UsersShowCase users={usersInChat}></UsersShowCase>
+      <div className="hidden md:block w-full md:w-3/12 lg:w-2/12 h-1/2 md:h-full lg:h-5/6 xl:h-3/4">
+        <UsersShowCase users={usersInChat}></UsersShowCase>
+      </div>
     </div>
   );
 };
