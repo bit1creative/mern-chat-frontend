@@ -18,18 +18,6 @@ const Join = ({ location }) => {
     "bg-gray-200 placeholder-gray-600"
   );
 
-  // function setViewHeight() {
-  //   let vh = window.innerHeight * 0.01;
-  //   document.documentElement.style.setProperty("--vh", `${vh}px`);
-  // }
-
-  // useEffect(() => {
-  //   setViewHeight();
-  //   window.addEventListener("resize", () => {
-  //     setViewHeight();
-  //   });
-  // }, []);
-
   return (
     <div className={`w-full h-screen overflow-hidden ${bgStyle}`}>
       <div className={`${location?.state?.error ? "block" : "hidden"}`}>

@@ -1,7 +1,7 @@
 import React from "react";
 
 import { AiOutlineSend } from "react-icons/ai";
-import { GrEmoji } from "react-icons/gr";
+// import { GrEmoji } from "react-icons/gr";
 
 const Input = ({ message, setMessage, sendMessage }) => {
   return (
@@ -11,17 +11,21 @@ const Input = ({ message, setMessage, sendMessage }) => {
           value={message}
           onChange={(event) => setMessage(event.target.value)}
           onKeyPress={(event) =>
-            event.key === "Enter" ? sendMessage(event) : null
+            event.key === "Enter"
+              ? (sendMessage(event), setMessage(event.target.value))
+              : null
           }
           type="text"
           placeholder="Start typing..."
           className="w-full p-4 md:p-2 focus:outline-none font-thin pr-20"
         />
-        <button className="absolute z-10 right-8 text-2xl text-custom-pinker p-4 md:p-2 focus:outline-none">
+        {/* <button className="absolute z-10 right-8 text-2xl text-custom-pinker p-4 md:p-2 focus:outline-none">
           <GrEmoji />
-        </button>
+        </button> */}
         <button
-          onClick={(event) => sendMessage(event)}
+          onClick={(event) => (
+            sendMessage(event), setMessage(event.target.value)
+          )}
           className="absolute right-0 z-10 text-2xl text-custom-pinker p-4 md:p-2 focus:outline-none"
         >
           <AiOutlineSend />
